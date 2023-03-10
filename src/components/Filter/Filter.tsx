@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Filter() {
+const Filter: React.FC = () => {
   return (
       <div>
           <input />
