@@ -11,7 +11,7 @@ export const fetchCharacters = createAsyncThunk(
       let message: string;
         if (error instanceof Error) {
           message = error.message;
-          console.log(typeof error.message)
+          console.log(error)
           return rejectWithValue(message);
         }
     }

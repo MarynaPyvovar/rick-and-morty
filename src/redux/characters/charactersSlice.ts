@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCharacters, fetchCharacterById } from './charactersOperations';
+import { fetchCharacters, fetchCharacterById } from 'redux/characters/charactersOperations';
 import { CharacterType } from 'dto/CharacterType';
 
 interface CharactersState {

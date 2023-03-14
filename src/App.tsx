@@ -1,17 +1,24 @@
 import 'App.css';
 import { Routes, Route } from 'react-router-dom';
-import CharactersPage from 'pages/CharactersPage/CharactersPage';
-import CharacterDetailsPage from 'pages/CharacterDetailsPage/CharacterDetailsPage';
-import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+import { lazy, Suspense } from "react";
+import { Loader, GoogleAuth } from 'components';
+
+const CharactersPage = lazy(() => import('pages/CharactersPage/CharactersPage'));
+const CharacterDetailsPage = lazy(() => import('pages/CharacterDetailsPage/CharacterDetailsPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 const App: React.FC = () => {
+  
   return (
     <div className="App">
-      <Routes>
-        <Route path='/' element={<CharactersPage />} />
-        <Route path='/:characterdId' element={<CharacterDetailsPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
+      <GoogleAuth />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path='/' element={<CharactersPage />} />
+          <Route path='/:characterdId' element={<CharacterDetailsPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }

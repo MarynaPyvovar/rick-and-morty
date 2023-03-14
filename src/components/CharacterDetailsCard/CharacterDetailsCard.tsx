@@ -1,28 +1,20 @@
-import React from 'react'
+import { CharacterType } from 'dto/CharacterType';
 
-interface CharacterType {
-    id: number,
-    species: string,
-    name: string,
-    image: string,
-    gender: 'male' | 'female',
-    status: string,
-    origin: { name: string },
-    type: string
-}
 
-const CharacterDetailsCard: React.FC<{character: CharacterType}> = ({character}) => {
+const CharacterDetailsCard: React.FC<{ character: CharacterType }> = ({ character }) => {
+  const { image, name, gender, status, species, origin, type } = character;
+  
   return (
     <div>
-        <img src={character.image} alt={character.name} />
-        <h1>{character.name}</h1>
+        <img src={image} alt={name} />
+        <h1>{name}</h1>
         <h2>Information</h2>
         <ul>
-          <li><h3>Gender</h3><p>{character.gender}</p></li>
-          <li><h3>Status</h3><p>{character.status}</p></li>
-          <li><h3>Specie</h3><p>{character.species}</p></li>
-          <li><h3>Origin</h3><p>{character.origin.name}</p></li>
-          <li><h3>Type</h3><p>{character.type.length > 0 ? character.type : 'Unknown'}</p></li>
+          <li><h3>Gender</h3><p>{gender}</p></li>
+          <li><h3>Status</h3><p>{status}</p></li>
+          <li><h3>Specie</h3><p>{species}</p></li>
+          <li><h3>Origin</h3><p>{origin.name}</p></li>
+          <li><h3>Type</h3><p>{type.length > 0 ? type : 'Unknown'}</p></li>
         </ul>
       </div>
   )
