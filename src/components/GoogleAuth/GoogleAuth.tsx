@@ -17,13 +17,11 @@ const GoogleAuth: React.FC = () => {
         dispatch(logoutGoogle())
     };
 
-    useEffect(
-        () => {
+    useEffect(() => {
             if (user) {
                 dispatch(loginGoogle(user))
             }
-        },
-        [ user, dispatch ]
+        }, [ user, dispatch ]
     );
 
   return (
@@ -33,12 +31,10 @@ const GoogleAuth: React.FC = () => {
                   <img src={profile.picture} alt='avatar' />
                     <p>Welcome, {profile.name}</p>
                     <p>{profile.email}</p>
-                    <br />
-                    <br />
                     <button onClick={logOut}>Log out</button>
                 </div>
             ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
+                <button onClick={() => login()}>Sign in with Google 🚀</button>
             )}
     </div>
   )

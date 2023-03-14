@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { authSlice } from './auth/authSlice';
 import { charactersSlice } from './characters/charactersSlice';
-// import { filterSlice } from './filter/filterSlice';
 import {
   persistStore,
   FLUSH,
@@ -21,9 +20,8 @@ const authPersistConfig = {
 };
 
 const reducers = combineReducers({
-   auth: persistReducer(authPersistConfig, authSlice.reducer),
-    characters: charactersSlice.reducer,
-    // filter: filterSlice.reducer,
+  auth: persistReducer(authPersistConfig, authSlice.reducer),
+  characters: charactersSlice.reducer,
 });
 
 export const store = configureStore({

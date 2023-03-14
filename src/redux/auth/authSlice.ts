@@ -20,10 +20,9 @@ export const authSlice = createSlice({
   name: 'auth',
     initialState,
     reducers: {
-        setUser: (state, action) => {
-            console.log('payload in setUser in slice', action.payload.access_token)
-            state.user = action.payload.access_token
-        }
+      setUser: (state, action) => {
+        state.user = action.payload.access_token;
+      }
     },
     extraReducers: builder => {
     builder
