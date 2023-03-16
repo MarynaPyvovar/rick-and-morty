@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrick_and_morty=self.webpackChunkrick_and_morty||[]).push([[309],{1309:function(e,n,r){r.r(n),r.d(n,{default:function(){return c}});r(2791);var t="NotFoundPage_text__OhoXe",a=r(184),c=function(){return(0,a.jsx)(a.Fragment,{children:(0,a.jsxs)("h1",{className:t,children:["We don't have any page in this directory :(",(0,a.jsx)("br",{}),"Please, write the correct one"]})})}}}]);
+//# sourceMappingURL=309.ebb2606c.chunk.js.map
