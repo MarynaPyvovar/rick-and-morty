@@ -1,0 +1,41 @@
+.wrapper {
+    position: relative;
+    align-self: center;
+    width: 100%;
+    margin-bottom: 61px;
+}
+
+.icon {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.filter {
+    display: block;
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+
+    &:hover, &:focus {
+        border: 1px solid rgb(33, 91, 150);
+    }
+
+    &::placeholder {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.5);
+    }
+}

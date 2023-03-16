@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 20px;
+  
+  @media screen and (min-width: 480px) {
+    padding: 20px 50px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 86px 210px 188px;
+  }
+}

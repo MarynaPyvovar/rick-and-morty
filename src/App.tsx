@@ -1,4 +1,4 @@
-import 'App.css';
+import st from 'App.module.scss';
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from "react";
 import { Loader, GoogleAuth } from 'components';
@@ -10,7 +10,7 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const App: React.FC = () => {
   
   return (
-    <div className="App">
+    <div className={st.app}>
       <GoogleAuth />
       <Suspense fallback={<Loader />}>
         <Routes>

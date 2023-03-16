@@ -1,0 +1,24 @@
+.back {
+    display: flex;
+    align-items: center;
+    width: 108px;
+    margin-bottom: 31px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+
+    &:hover, &:focus {
+        color: rgb(33, 91, 150);
+        text-decoration: underline;
+    }
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}

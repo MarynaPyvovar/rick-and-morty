@@ -4,6 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import { fetchCharacters } from "redux/characters/charactersOperations";
 import { useDebounce } from "use-debounce";
 
+import st from 'components/Filter/Filter.module.scss';
+import { BiSearchAlt2 } from 'react-icons/bi';
+
 const Filter: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('name');
@@ -23,13 +26,15 @@ const Filter: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={st.wrapper}>
+      <BiSearchAlt2 className={st.icon} />
       <input
         onChange={handleChange}
         type="text"
         name="filter"
         value={value}
         placeholder='Filter by name...'
+        className={st.filter}
       />
     </div>
   )

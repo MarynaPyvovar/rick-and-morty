@@ -4,7 +4,8 @@ import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import { fetchCharacterById } from 'redux/characters/charactersOperations';
 import { selectCharacters } from 'redux/characters/charactersSelectors';
 import { CharacterDetailsCard } from 'components';
-
+import st from 'pages/CharacterDetailsPage/CharacterDetailsPage.module.scss'
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const CharacterDetailsPage: React.FC = () => {
   const { characterdId } = useParams();
@@ -19,10 +20,12 @@ const CharacterDetailsPage: React.FC = () => {
   const backLink = location.state?.from ?? '/';
 
   return (
-    <div>
-      <Link to={backLink}>Go back</Link>
+    <>
+      <Link to={backLink} className={st.back}>
+        <AiOutlineArrowLeft className={st.icon} /> Go back
+      </Link>
       {character && <CharacterDetailsCard character={character} />}
-    </div>
+    </>
   )
 }
 

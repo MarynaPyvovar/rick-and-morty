@@ -1,10 +1,11 @@
 import LogoImage from 'assets/LogoImage.png';
+import st from 'components/Logo/Logo.module.scss';
 
 const Logo: React.FC = () => {
   return (
-    <div>
-      <img src={LogoImage} alt="Logo" />
-    </div>
+    <>
+      <img src={LogoImage} alt="Logo" className={st.image} />
+    </>
   )
 }
 

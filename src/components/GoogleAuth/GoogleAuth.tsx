@@ -4,6 +4,10 @@ import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
 import { loginGoogle, logoutGoogle, setUser } from 'redux/auth/authOperations';
 import { selectAuth } from 'redux/auth/authSelectors';
 
+import st from 'components/GoogleAuth/GoogleAuth.module.scss';
+import { FcGoogle } from 'react-icons/fc';
+import { MdOutlineLogout } from 'react-icons/md';
+
 const GoogleAuth: React.FC = () => {
     const { user, profile } = useAppSelector(selectAuth);
     const dispatch = useAppDispatch();
@@ -25,17 +29,20 @@ const GoogleAuth: React.FC = () => {
     );
 
   return (
-    <div>
-      {profile ? (
-              <div>
-                  <img src={profile.picture} alt='avatar' />
-                    <p>Welcome, {profile.name}</p>
-                    <p>{profile.email}</p>
-                    <button onClick={logOut}>Log out</button>
+    <div className={st.wrapper}>
+        {profile ? (
+                <div className={st.info}>
+                    <img src={profile.picture} alt='avatar'className={st.avatar} />
+                    <p className={st.name}>Welcome, {profile.name}</p>
+                    <button onClick={logOut} className={st.button}>
+                        <MdOutlineLogout className={st.icon} />Log out
+                    </button>
                 </div>
-            ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀</button>
-            )}
+                ) : (
+                <button onClick={() => login()} className={st.button}>
+                    <FcGoogle className={st.icon} />Sign in with Google
+                </button>
+                )}
     </div>
   )
 }
