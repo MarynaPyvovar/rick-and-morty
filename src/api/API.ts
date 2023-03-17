@@ -8,12 +8,22 @@ const instance = axios.create({
   baseURL: BASE_URL,
 });
 
-export async function fetchCharactersFromAPI(name: string | null): Promise<CharacterType[]> {
-  const { data } = await instance.get('/character/', { params: { name } });
-  return data.results;
+interface Query {
+  name: string | null,
+  page: string | null
 }
 
-export async function fetchCharacterByIdFromAPI(id: string): Promise<CharacterType> {
+interface Info {
+  info: {pages: number},
+  results: CharacterType[]
+}
+
+export async function fetchCharactersFromAPI({name, page}: Query): Promise<Info> {
+  const { data } = await instance.get('/character/', { params: { name, page } });
+  return data;
+}
+
+export async function fetchCharacterByIdFromAPI(id: string | undefined): Promise<CharacterType> {
   const {data} = await instance.get(`/character/${id}`);
   return data;
 }

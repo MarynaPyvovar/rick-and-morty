@@ -1,21 +1,35 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from 'hooks/reduxHooks';
-import { fetchCharacterById } from 'redux/characters/charactersOperations';
-import { selectCharacters } from 'redux/characters/charactersSelectors';
-import { CharacterDetailsCard } from 'components';
+import { CharacterDetailsCard, Loader } from 'components';
+import { fetchCharacterByIdFromAPI } from 'api/API';
+
 import st from 'pages/CharacterDetailsPage/CharacterDetailsPage.module.scss'
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { CharacterType } from "dto/CharacterType";
 
 const CharacterDetailsPage: React.FC = () => {
   const { characterdId } = useParams();
   const location = useLocation();
-  const dispatch = useAppDispatch();
-  const { character } = useAppSelector(selectCharacters);
+
+  const [character, setCharacter] = useState<CharacterType | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<null | Error>(null);
+
+  const getItem = useCallback(async () => {
+    const res = await fetchCharacterByIdFromAPI(characterdId);
+    setCharacter(res)
+  }, [characterdId]) 
 
   useEffect(() => {
-    dispatch(fetchCharacterById(characterdId))
-  }, [dispatch, characterdId])
+    setIsLoading(true)
+    try {
+      getItem()
+    } catch (error) {
+      setError(error as Error)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [getItem])
 
   const backLink = location.state?.from ?? '/';
 
@@ -25,6 +39,8 @@ const CharacterDetailsPage: React.FC = () => {
         <AiOutlineArrowLeft className={st.icon} /> Go back
       </Link>
       {character && <CharacterDetailsCard character={character} />}
+      {isLoading && <Loader />}
+      {error && <p>Oops, error... Try again later!</p>}
     </>
   )
 }

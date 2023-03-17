@@ -10,13 +10,11 @@ export const loginGoogle = createAsyncThunk(
   async (token: string, { rejectWithValue }) => {
     try {
         const data = await loginWithGoogle(token);
-        console.log(data)
       return data;
     } catch (error) {
       let message: string;
         if (error instanceof Error) {
           message = error.message;
-          console.log(error)
           return rejectWithValue(message);
         }
     }
@@ -32,7 +30,6 @@ export const logoutGoogle = createAsyncThunk(
       let message: string;
         if (error instanceof Error) {
           message = error.message;
-          console.log(error)
           return rejectWithValue(message);
         }
     }
