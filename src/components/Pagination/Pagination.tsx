@@ -1,14 +1,13 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom';
+import { selectCharacters } from 'redux/characters/charactersSelectors';
+import { useAppSelector } from 'hooks/reduxHooks';
 
 import st from 'components/Pagination/Pagination.module.scss';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
-interface Props {
-  pages: string | null,
-}
-
-const Pagination: React.FC<Props> = ({ pages}) => {
+const Pagination: React.FC = () => {
+  const { pages, error } = useAppSelector(selectCharacters);
   const [searchParams, setSearchParams] = useSearchParams();
   const nameParam = searchParams.get('name');
   const pageParam = searchParams.get('page');
@@ -33,7 +32,7 @@ const Pagination: React.FC<Props> = ({ pages}) => {
 
   return (
     <div className={st.wrapper}>
-      <button
+      {!error && <><button
         disabled={validCurrentPage === 1}
         onClick={onPrevClick}
         className={st.button}
@@ -47,7 +46,7 @@ const Pagination: React.FC<Props> = ({ pages}) => {
         className={st.button}
       >
         <AiOutlineArrowRight />
-      </button>
+      </button></>}
     </div>
   )
 }
