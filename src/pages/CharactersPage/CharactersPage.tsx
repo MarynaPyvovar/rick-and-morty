@@ -1,25 +1,26 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Logo, Filter, Cards, Pagination } from "components";
-import { useAppDispatch } from "hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { fetchCharacters } from 'redux/characters/charactersOperations';
+import { selectCharacters } from "redux/characters/charactersSelectors";
 
 const CharactersPage: React.FC = () => {
+  const { pages } = useAppSelector(selectCharacters);
   const [searchParams, setSearchParams] = useSearchParams();
   const queryName = searchParams.get('name');
   const queryPage = searchParams.get('page');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (Number(queryPage) < 1) {
+    if (Number(queryPage) < 1 || Number(queryPage) > Number(pages)) {
       setSearchParams({ name: queryName || '', page: '1' });
+      dispatch(fetchCharacters({ name: queryName, page: '1' }))
       return
     }
-  }, [])
 
-  useEffect(() => {
     dispatch(fetchCharacters({ name: queryName, page: queryPage })) 
-  }, [queryName, queryPage, dispatch]) 
+  }, [queryName, queryPage, dispatch, setSearchParams, pages]) 
 
   return (
     <>
