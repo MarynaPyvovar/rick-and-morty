@@ -1,14 +1,13 @@
 import { useAppSelector } from 'hooks/reduxHooks';
 import { Link, useLocation } from 'react-router-dom';
 import { selectCharacters } from 'redux/characters/charactersSelectors';
-import { Loader } from 'components';
 
 import st from 'components/Cards/Cards.module.scss';
 import defaultImage from 'assets/defaultImage.jpg';
 
 const Cards: React.FC = () => {
   const location = useLocation();
-  const { items, isLoading, error } = useAppSelector(selectCharacters);
+  const { items, error } = useAppSelector(selectCharacters);
 
   const sortedItems = [...items].sort((prev, next) =>  prev.name.localeCompare(next.name))
 
@@ -25,8 +24,6 @@ const Cards: React.FC = () => {
           </Link>
         </li>)}
       </ul>
-      {isLoading && <Loader />}
-      
     </>
   )
 }

@@ -12,20 +12,14 @@ const Pagination: React.FC = () => {
   const nameParam = searchParams.get('name');
   const pageParam = searchParams.get('page');
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
   const onNextClick = () => {
-    const newPage = pageParam ? (Number(pageParam) + 1) : String(1 + 1);
+    const newPage = pageParam ? String(Number(pageParam) + 1) : String(1 + 1);
     setSearchParams({ name: nameParam as '', page: newPage as '' });
-    scrollToTop();
   }
 
   const onPrevClick = () => {
     const newPage = pageParam ? String(Number(pageParam) - 1) : String(1 - 1);
     setSearchParams({ name: nameParam as '', page: newPage });
-    scrollToTop();
   }
 
   const validCurrentPage = Number(pageParam) > 0 ? Number(pageParam): 1;

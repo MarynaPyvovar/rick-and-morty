@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Logo, Filter, Cards, Pagination } from "components";
+import { Logo, Filter, Cards, Pagination, Loader } from "components";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { fetchCharacters } from 'redux/characters/charactersOperations';
 import { selectCharacters } from "redux/characters/charactersSelectors";
 
 const CharactersPage: React.FC = () => {
-  const { pages } = useAppSelector(selectCharacters);
+  const { pages, isLoading } = useAppSelector(selectCharacters);
   const [searchParams, setSearchParams] = useSearchParams();
   const queryName = searchParams.get('name');
   const queryPage = searchParams.get('page');
@@ -26,7 +26,7 @@ const CharactersPage: React.FC = () => {
     <>
       <Logo />
       <Filter/>
-      <Cards />
+      {isLoading ? <Loader /> : <Cards />}
       <Pagination />
     </>
   )
