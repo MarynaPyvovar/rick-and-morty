@@ -1,5 +1,5 @@
-# Rick ang Morty
-An application that you can use to search for your favorite cartoon characters and learn more facts about them. The user can register using Google. In the future, it is planned to add several more pages and methods of authorization, a personal user account with the function of adding favorite characters, sorting by various characteristics and the ability to create your own character
+# Rick and Morty
+An application that you can use to search for your favorite cartoon characters and learn more facts about them. The user can register using Google. In the future, it is planned to add several more pages and methods of authorization, a personal user account with the function of adding favorite characters, sorting characters by various characteristics and the ability to create your own character in a cartoon-like style.
 
 ## Links
 - Repository https://github.com/MarynaPyvovar/rick-and-morty
@@ -21,7 +21,7 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 
 ## Built with
 - JavaScript
-- Typescript
+- TypeScript
 - React
 - Redux Toolkit
 - NPM
